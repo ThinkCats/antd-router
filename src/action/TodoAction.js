@@ -8,7 +8,7 @@ class TodoAction {
 
   decrease = (number) =>{
     console.log('store decre');
-    this.dispatch(number);
+    return number;
   }
 }
 

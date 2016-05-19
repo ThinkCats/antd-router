@@ -5,7 +5,7 @@ import {Router,Route,IndexRoute,hashHistory} from 'react-router';
 import { Provider } from 'react-redux';
 import Frame from './Frame';
 import App from '../component/App';
-import Pag from '../component/TestPage';
+import {Pag} from '../component/TestPage';
 import NotFound from '../component/NotFound';
 
 ReactDOM.render((

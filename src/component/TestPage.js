@@ -1,29 +1,41 @@
 import React from 'react';
-import { Pagination } from 'antd';
+import { Pagination ,Col ,Row } from 'antd';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import TodoStore from '../store/TodoStore';
 import TodoAction from '../action/TodoAction';
 
 
-class Pag extends React.Component{
+class PurePag extends React.Component{
+
+  constructor(props){
+    super(props);
+    let store = TodoStore.getState();
+    this.state ={
+      store
+    }
+  }
 
   static getStores() {
     return [TodoStore];
   }
 
   static getPropsFromStores() {
-    return TodoStore.getState();
+    let state = TodoStore.getState();
+    console.log('state in tran:',state);
+    return {
+      number : state.number
+    };
   }
-
 
   handleClick = () =>{
     console.log('click :',this.props.number);
     let num = this.props.number;
-    console.log('number from store',num);
+    console.log('number from store',this.state.store);
     TodoAction.increase(num);
   };
 
   handleDecre =()=>{
+    console.log('decre number:',this.props.number);
     TodoAction.decrease(this.props.number);
   };
 
@@ -44,4 +56,4 @@ class Pag extends React.Component{
 
 }
 
-export default connectToStores(Pag);
+export const Pag  = connectToStores(PurePag);
